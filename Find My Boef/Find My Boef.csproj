@@ -1,0 +1,136 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Find_My_Boef</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	<GenerateProgramFile>false</GenerateProgramFile>
+	<StartupObject></StartupObject>
+	<ApplicationIcon>Images\findmyboef.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Hamburger.png" />
+    <None Remove="Images\icon_account.png" />
+    <None Remove="Images\icon_delict.png" />
+    <None Remove="Images\icon_exit.png" />
+    <None Remove="Images\icon_file.png" />
+    <None Remove="Images\icon_plus.png" />
+    <None Remove="Images\icon_settings.png" />
+    <None Remove="Images\MarkerAgentVerbindingVerbroken.png" />
+    <None Remove="Images\MarkerCameraNotWorking.png" />
+    <None Remove="Images\MarkerCameraWorking.png" />
+    <None Remove="shutdown-icon-18-256.png" />
+    <None Remove="Images\Tweet.png" />
+    <None Remove="Tweet.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.31" />
+    <PackageReference Include="Npgsql" Version="7.0.0" />
+    <PackageReference Include="SSH.NET" Version="2020.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\findmyboef.ico">
+
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\foto-politie.nl.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon_delict.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon_plus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MarkerCameraNotWorking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MarkerCameraWorking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Settings.xaml.cs" />
+    <Resource Include="Images\icon_account.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icon_exit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icon_file.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icon_settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Images\MarkerAgent.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MarkerAgentVerbindingVerbroken.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MarkerDelictAssult.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MarkerDelictSubstance.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MarkerDelictUnknown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MarkerUnknown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GMap.NET.WinForms" Version="2.1.7" />
+    <PackageReference Include="MySql.Data" Version="8.0.31" />
+    <PackageReference Include="Npgsql" Version="7.0.0" />
+    <PackageReference Include="SSH.NET" Version="2020.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <None Remove="Images\findmyboef.ico" />
+    <None Remove="Images\foto-politie.nl.jpg" />
+    <None Remove="Images\MarkerAgent.png" />
+    <None Remove="Images\MarkerCamera.PNG" />
+    <None Remove="Images\MarkerDelictAssult.png" />
+    <None Remove="Images\MarkerDelictSubstance.png" />
+    <None Remove="Images\MarkerDelictUnknown.png" />
+    <None Remove="Images\MarkerUnknown.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GMap.NET.Core" Version="2.1.7" />
+    <PackageReference Include="GMap.NET.WinPresentation" Version="2.1.7" />
+    <PackageReference Include="Microsoft.ML" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+    <PackageReference Include="TweetinviAPI" Version="5.0.4" />
+    <PackageReference Include="SSH.NET" Version="2020.0.2" />
+    <PackageReference Include="ToastNotifications" Version="2.5.1" />
+    <PackageReference Include="ToastNotifications.Messages" Version="2.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\lib\websocket-sharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Tweet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Hamburger.png" />
+    <Resource Include="Images\shutdown-icon-18-256.png" />
+  </ItemGroup>
+</Project>

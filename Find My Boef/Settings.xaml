@@ -1,0 +1,373 @@
+﻿<Window x:Class="Find_My_Boef.Settings" Topmost="True"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        ResizeMode="NoResize"
+      WindowStyle="None"
+      Closing="Window_Closing"
+      WindowStartupLocation="CenterScreen"
+      mc:Ignorable="d" Title="Settings" Height="586" Width="878" AllowsTransparency="True" Background="{x:Null}">
+
+    <Border CornerRadius="8" BorderThickness="4,4,4,4" BorderBrush="#FF6F6C68">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1F2223" Offset="1"/>
+                <GradientStop Color="#FF2B2B2B" Offset="0"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Button x:Name="ExitBtn" HorizontalAlignment="Right" Width="32" HorizontalContentAlignment="Left" BorderBrush="{x:Null}" Margin="0,10,10,535" Cursor="Hand" Foreground="#FFC3BAAB" FontSize="20" Click="btnSubmit_Click" Background="#FFBD332C">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                    <GradientStop Color="#FF0688A7"/>
+                                    <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FF0688A7"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FFD22F2F"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <TextBlock Text="X" Height="31"/>
+            </Button>
+            <Border BorderBrush="#FFC3BAAB" BorderThickness="2" Height="101" Margin="44,92,44,0" VerticalAlignment="Top">
+                <Slider Name="TimerSlider" Margin="389,23,41,30" Minimum="1" Maximum="60" TickFrequency="10" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Foreground="#FFC3BAAB" Value="{Binding CurrentTimerSetting}" ValueChanged="TimerSlider_ValueChanged">
+                </Slider>
+            </Border>
+            <TextBlock HorizontalAlignment="Center" Margin="0,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="114" Height="30" FontSize="22"><Run Language="en-gb" Text="Instellingen"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="95,84,0,0" TextWrapping="Wrap" Text="Timer snelheid" VerticalAlignment="Top" Width="103" TextAlignment="Center" Foreground="#FFC3BAAB" FontSize="14">
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF29292A"/>
+                        <GradientStop Color="#FF292A2A" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="74,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="216" FontSize="16"><Run Text="Ververssnelheid van de kaart"/><Run Language="en-gb" Text=":"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="437,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="1"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="491,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="14"><Run Text="1"/><Run Language="en-gb" Text="0"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="548,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="14"><Run Language="en-gb" Text="2"/><Run Text="0"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="605,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="14"><Run Language="en-gb" Text="3"/><Run Text="0"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="662,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="14"><Run Language="en-gb" Text="4"/><Run Text="0"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="719,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="14"><Run Language="en-gb" Text="5"/><Run Text="0"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="771,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="14" RenderTransformOrigin="0.607,0.439"><Run Language="en-gb" Text="6"/><Run Text="0"/></TextBlock>
+            <Border Margin="305,133,548,674" BorderThickness="1" CornerRadius="90,90,90,90" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <Border.ToolTip>
+                    <ToolTip Content="Als het voorkomt dat uw applicatie te langzaam reageert. Dan kan het helpen om de ververssnelheid van de kaart hoger te zetten. Het gaat hier om de ververssnelheid in seconden."
+                 OverridesDefaultStyle="True"
+                 HasDropShadow="True" Foreground="#FFC3BAAB">
+                        <ToolTip.Template>
+                            <ControlTemplate TargetType="ToolTip">
+                                <Border BorderBrush="#FFC3BAAB" BorderThickness="2"
+                            CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF1F2223" Offset="1"/>
+                                            <GradientStop Color="#FF2B2B2B" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{TemplateBinding Content}"
+                                       Margin="10"
+                                       Width="150" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
+                        </ToolTip.Template>
+                    </ToolTip>
+                </Border.ToolTip>
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF314EC3"/>
+                        <GradientStop Color="#FFA54825" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <TextBlock Text="?" VerticalAlignment="Center" HorizontalAlignment="Center" Height="17" Foreground="#FFC3BAAB"/>
+            </Border>
+
+            <Border BorderBrush="#FFC3BAAB" BorderThickness="2" Height="114" Margin="44,219,44,0" VerticalAlignment="Top">
+                <Slider Name="HeatmapSlider" Margin="389,38,42,38" Minimum="0.001" Maximum="0.009" TickFrequency="0.001" Value="{Binding CurrentHeatMapSetting}" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Foreground="#FFC3BAAB" ValueChanged="HeatmapSlider_ValueChanged" RenderTransformOrigin="0.5,0.5">
+                    <Slider.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Slider.RenderTransform>
+                </Slider>
+            </Border>
+            <Border Margin="298,134,556,429" BorderThickness="1" CornerRadius="90,90,90,90" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <Border.ToolTip>
+                    <ToolTip Content="Dit bepaalt hoevaak het programma nieuwe meldingen in laad. Hoe lager hoe sneller. Let op: als het programma langzaam reageert, is het aanbevolen deze instelling hoger te zetten"
+                 OverridesDefaultStyle="True"
+                 HasDropShadow="True" Foreground="#FFC3BAAB">
+                        <ToolTip.Template>
+                            <ControlTemplate TargetType="ToolTip">
+                                <Border BorderBrush="#FFC3BAAB" BorderThickness="2"
+                            CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF1F2223" Offset="1"/>
+                                            <GradientStop Color="#FF2B2B2B" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{TemplateBinding Content}"
+                                       Margin="10"
+                                       Width="150" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
+                        </ToolTip.Template>
+                    </ToolTip>
+                </Border.ToolTip>
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF314EC3"/>
+                        <GradientStop Color="#FFA54825" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <TextBlock Text="?" VerticalAlignment="Top" HorizontalAlignment="Center" Height="15" Foreground="#FFC3BAAB" Width="6" Margin="0,-2,0,0"/>
+            </Border>
+            <Border Margin="316,265,538,298" BorderThickness="1" CornerRadius="90,90,90,90" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <Border.ToolTip>
+                    <ToolTip Content="Dit bepaalt hoeveel delicten er actief zijn voordat de heatmap dit aangeeft. Hoe hoger hoe gevoeliger en hoe lager hoe minder gevoelig"
+                 OverridesDefaultStyle="True"
+                 HasDropShadow="True" Foreground="#FFC3BAAB">
+                        <ToolTip.Template>
+                            <ControlTemplate TargetType="ToolTip">
+                                <Border BorderBrush="#FFC3BAAB" BorderThickness="2"
+                            CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF1F2223" Offset="1"/>
+                                            <GradientStop Color="#FF2B2B2B" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{TemplateBinding Content}"
+                                       Margin="10"
+                                       Width="150" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
+                        </ToolTip.Template>
+                    </ToolTip>
+                </Border.ToolTip>
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF314EC3"/>
+                        <GradientStop Color="#FFA54825" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <TextBlock Text="?" VerticalAlignment="Top" HorizontalAlignment="Center" Height="15" Foreground="#FFC3BAAB" Width="6" Margin="0,-2,0,0"/>
+            </Border>
+            <Border BorderBrush="#FFC3BAAB" BorderThickness="2" Height="114" Margin="42,362,46,0" VerticalAlignment="Top">
+                <Slider x:Name="ZoomSlider" Margin="389,32,39,55" Minimum="4" Maximum="18" TickFrequency="2" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Foreground="#FFC3BAAB" Value="{Binding CurrentZoomValue}" ValueChanged="ZoomSlider_ValueChanged"/>
+
+            </Border>
+            <Border Margin="346,411,508,152" BorderThickness="1" CornerRadius="90,90,90,90" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <Border.ToolTip>
+                    <ToolTip Content="Dit bepaalt hoe ver de kaart is ingezoomd bij het opstarten van de kaart. 1 is ver uitgezoomd en 9 is ver ingezoomd"
+                 OverridesDefaultStyle="True"
+                 HasDropShadow="True" Foreground="#FFC3BAAB">
+                        <ToolTip.Template>
+                            <ControlTemplate TargetType="ToolTip">
+                                <Border BorderBrush="#FFC3BAAB" BorderThickness="2"
+                            CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF1F2223" Offset="1"/>
+                                            <GradientStop Color="#FF2B2B2B" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{TemplateBinding Content}"
+                                       Margin="10"
+                                       Width="150" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
+                        </ToolTip.Template>
+                    </ToolTip>
+                </Border.ToolTip>
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF314EC3"/>
+                        <GradientStop Color="#FFA54825" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <TextBlock Text="?" VerticalAlignment="Top" HorizontalAlignment="Center" Height="15" Foreground="#FFC3BAAB" Width="6" Margin="0,-2,0,0"/>
+            </Border>
+            <TextBlock HorizontalAlignment="Left" Margin="435,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="-4"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="605,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="#FFC3BAAB" Height="14"><Run Language="en-gb" Text="0"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="589,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="Standaard"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="773,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="4"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="88,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" TextAlignment="Center" Foreground="#FFC3BAAB" FontSize="14">
+
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF272828"/>
+                        <GradientStop Color="#FF272828" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background><Run Language="en-gb" Text="Heatmap gevoeligheid"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="88,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" TextAlignment="Center" Foreground="#FFC3BAAB" FontSize="14" Text="Kaartzoom">
+
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF242526"/>
+                        <GradientStop Color="#FF232526" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="420,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="40"><Run Language="en-gb" Text="Standaard"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="79,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="223" FontSize="16"><Run Text="Gevoeligheid van de heatmap"/><Run Language="en-gb" Text=":"/></TextBlock>
+            <Button x:Name="SaveBTN" Foreground="white" Margin="688,524,31,18" Cursor="Hand" Click="SaveBTN_Click" RenderTransformOrigin="0.5,0.5">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Content>
+                    <Grid>
+                        <TextBlock FontSize="30px" VerticalAlignment="Top" HorizontalAlignment="Right" Width="108" Margin="0,-8,0,0" ><Run Text="Opslaan"/></TextBlock>
+                    </Grid>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                    <GradientStop Color="#FF0688A7"/>
+                                    <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FF00A6CD"/>
+                                            <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="Green"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="74,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Width="258" FontSize="16"><Run Text="Standaard map zoom bij opstarten"/><Run Language="en-gb" Text=":"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="484,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="2"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="435,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="1"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="425,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="Groot"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="765,438,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="Klein"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="726,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="7"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="677,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Text="6"/>
+            <TextBlock HorizontalAlignment="Left" Margin="629,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB" Text="5"/>
+            <TextBlock HorizontalAlignment="Left" Margin="581,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="4"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="532,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="3"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="774,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFC3BAAB"><Run Language="en-gb" Text="8"/></TextBlock>
+
+
+        </Grid>
+    </Border>
+</Window>

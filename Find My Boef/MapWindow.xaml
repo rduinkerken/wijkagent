@@ -1,0 +1,450 @@
+<Window
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        xmlns:local="clr-namespace:Find_My_Boef"
+        xmlns:DataContext="clr-namespace:Find_My_Boef.DataContext" x:Class="Find_My_Boef.MapWindow"
+        mc:Ignorable="d"
+        Title="MapWindow" Width="1939" Height="1093" Background="#FF1F2223"
+         WindowStyle="None"
+         WindowState="Maximized"
+         WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid Height="65" VerticalAlignment="Top" Background="#FF1F2223">
+            <TextBlock x:Name="DisplayWSSConnectionStatus" TextAlignment="Center" FontSize="30" Height="45" VerticalAlignment="Center" Margin="0,0,30,0"/>
+            <TextBlock x:Name="DisplayNameTextBox" TextAlignment="Right" Foreground="white" FontSize="30" Height="45" VerticalAlignment="Center" Text="Account name placeholder" Margin="0,0,30,0"/>
+            <Button x:Name="HamburgerButton" Content="" FontSize="30" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="55" Click="HamburgerButton_Click" Foreground="#FFC3BAAC" Background="#FFC3BAAC" Margin="20,6,0,6" RenderTransformOrigin="0.512,0.567" Cursor="Hand">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Images/Hamburger.png"/>
+                </Button.OpacityMask>
+            </Button>
+
+        </Grid>
+        <StackPanel x:Name="Sidebar" Visibility="Visible" Background="#FF1F2223" Width="299" HorizontalAlignment="Left" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="0,65,0,0">
+            <Button x:Name="SettingsButton" Foreground="white" Width="240" Height="70" Margin="0,20,0,0" Cursor="Hand" Click="SettingsButton_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <Grid>
+                        <TextBlock FontSize="30px" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Instellingen" Width="200" />
+                        <Image Source="\Images\icon_settings.png" Margin="168,17,-11,13"/>
+                    </Grid>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                    <GradientStop Color="#FF0688A7"/>
+                                    <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FF00A6CD"/>
+                                            <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="Green"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="OffenseHistoryButton" Foreground="white" Width="240" Height="70" Margin="0,20,0,0" Cursor="Hand" Click="OffenseButton_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <Grid>
+                        <TextBlock FontSize="30px" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Alle delicten" Width="200" />
+                        <Image Source="\Images\icon_delict.png" Margin="168,17,-11,13"/>
+                    </Grid>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                    <GradientStop Color="#FF0688A7"/>
+                                    <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FF00A6CD"/>
+                                            <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="Green"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="ExitButton" Foreground="white" Width="240" Height="70" Margin="0,20,0,0" Click="ExitButton_Click" Cursor="Hand">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <Grid>
+                        <TextBlock FontSize="30px" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Uitloggen" Width="200" />
+                        <Image Source="\Images\icon_exit.png" Margin="171,17,-11,13"/>
+                    </Grid>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                    <GradientStop Color="#FF0688A7"/>
+                                    <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FF00A6CD"/>
+                                            <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="Green"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="AdminButton" Foreground="white" Width="240" Height="70" Margin="0,20,0,0" BorderThickness="2,2,2,2" Cursor="Hand" Visibility="Hidden" Click="AdminButton_OnClick">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <Grid>
+                        <TextBlock FontSize="25px" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Administreren" Width="200" />
+                        <Image Source="\Images\icon_file.png" Margin="160,17,-11,13"/>
+                    </Grid>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                    <GradientStop Color="#FF0688A7"/>
+                                    <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FF00A6CD"/>
+                                            <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="Green"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Grid Height="224">
+                <Label x:Name="StatusLabel" Content="Status" HorizontalAlignment="Left" Height="35" Margin="6,11,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontSize="22"/>
+                <ComboBox x:Name="StatusDropdown" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBoxItem Content="Alles"/>
+                    <ComboBoxItem Content="Niet afgerond" IsSelected="True"/>
+                    <ComboBoxItem Content="Onbezocht" />
+                    <ComboBoxItem Content="Bezig"/>
+                    <ComboBoxItem Content="Afgerond"/>
+                </ComboBox>
+                <ComboBox x:Name="TypeDropdown" HorizontalAlignment="Left" Margin="169,50,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBoxItem Content="Alles" IsSelected="True"/>
+                    <ComboBoxItem Content="Ongeval"/>
+                    <ComboBoxItem Content="Overval"/>
+                    <ComboBoxItem Content="Drugs"/>
+                    <ComboBoxItem Content="Onbekend"/>
+                </ComboBox>
+                <Label x:Name="TypeLabel" Content="Type" HorizontalAlignment="Left" Margin="164,11,0,0" VerticalAlignment="Top" FontSize="22" Background="{x:Null}" Foreground="White"/>
+                <DatePicker x:Name="FromDatepicker" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="FromDateTimeLabel" Content="Vanaf" HorizontalAlignment="Left" Margin="6,88,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
+                <DatePicker x:Name="ToDatepicker" HorizontalAlignment="Left" Margin="169,124,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ToDateTimeLabel" Content="Tot" HorizontalAlignment="Left" Margin="164,87,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24"/>
+                <Button x:Name="FilterButton" Foreground="white" Margin="220,169,10,29" Cursor="Hand" Click="FilterButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        <Grid>
+                            <TextBlock FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Filter" Width="43" Height="28" RenderTransformOrigin="1.047,0.525" Margin="0,0,0,-1" />
+                        </Grid>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                                <GradientStop Color="#FF00A6CD"/>
+                                                <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                                <GradientStop Color="Green"/>
+                                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="ClearButton" Foreground="white" Margin="137,169,93,29" Cursor="Hand" Click="ClearButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        <Grid>
+                            <TextBlock FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Clear" Width="43" Height="28" RenderTransformOrigin="1.047,0.525" />
+                        </Grid>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                                <GradientStop Color="#FF00A6CD"/>
+                                                <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                                <GradientStop Color="Green"/>
+                                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </Grid>
+
+        </StackPanel>
+
+        <Grid x:Name="MapGrid" Margin="299,65,0,0" Background="White">
+            <gmaps:GMapControl x:Name="mapView" Loaded="MapView_Loaded" MouseUp="MapView_OnMouseUp"/>
+        </Grid>
+        <StackPanel Width="250" Margin="0,80,0,0" HorizontalAlignment="Right">
+            <Button x:Name="AddOffenseButton" Foreground="white" Height="70" BorderThickness="2,2,2,2" Cursor="Hand" Visibility="Visible" Click="AddOffense_Click" Width="250">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10,0,0,10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                    <GradientStop Color="#FF0688A7"/>
+                                    <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="#FF00A6CD"/>
+                                            <GradientStop Color="#FF8F00D6" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                            <GradientStop Color="Green"/>
+                                            <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Grid>
+                    <TextBlock Name="AddOffenseText" FontSize="23px" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Voeg delict toe" Width="156" Margin="10,0,0,0" />
+                    <Image Name="AddOffenseImg" Source="\Images\icon_plus.png" Margin="183,15,0,15" HorizontalAlignment="Left" Width="51" RenderTransformOrigin="-0.157,0.488"/>
+                </Grid>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>

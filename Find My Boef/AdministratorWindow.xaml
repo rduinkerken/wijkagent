@@ -1,0 +1,440 @@
+﻿<Window x:Class="Find_My_Boef.AdministratorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Find_My_Boef"
+        mc:Ignorable="d"
+        Title="Administreren" Height="600" Width="800" FontSize="16" FontFamily="Calibri" Background="#FF1F2223" ResizeMode="NoResize">
+    <Window.Resources>
+        <DataTemplate x:Key="ItemTemplate">
+            <TextBlock Text="{Binding FullName}"></TextBlock>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Name="FullGrid" HorizontalAlignment="Center" Width="800" VerticalAlignment="Center">
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <Label Content="Verwijderen administratoren" Margin="24,22,0,0" VerticalAlignment="Top" FontSize="{Binding RegularTextFontSize}" FontWeight="Bold" HorizontalAlignment="Left" Width="219" Foreground="white"/>
+        <ListBox Name="RemoveAdminBox" Margin="24,55,596,325" ItemsSource="{Binding Administrators}" ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="AdminRemoveSelected"></ListBox>
+        <Label Content="Toevoegen administratoren" Margin="24,0,0,0" VerticalAlignment="Center" FontSize="{Binding RegularTextFontSize}" FontWeight="Bold" HorizontalAlignment="Left" Width="219" Foreground="white"/>
+        <ListBox Name="AddAdminBox" Margin="24,333,596,59" ItemsSource="{Binding EmployeeListAdmin}" ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="AdminAddSelected"></ListBox>
+        <TextBox Name="AdminSearchBox" Margin="24,292,596,236" TextChanged="SearchAdmin">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Search" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <GridSplitter Height="546" Margin="250,3,548,0" VerticalAlignment="Top" Background="Gray" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch">
+            <GridSplitter.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform AngleY="-1.364"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.06"/>
+                </TransformGroup>
+            </GridSplitter.RenderTransform>
+        </GridSplitter>
+
+        <Label Content="Verwijderen wijkagenten" HorizontalAlignment="Right" Margin="0,18,276,0" VerticalAlignment="Top" FontSize="{Binding RegularTextFontSize}" FontWeight="Bold" Width="258" Foreground="White"/>
+        <ListBox Name="RemoveOfficerBox" Margin="266,55,354,325" ItemsSource="{Binding Officers}" ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OfficerRemoveSelected"></ListBox>
+        <Label Content="Toevoegen wijkagenten" Margin="266,0,0,0" VerticalAlignment="Center" FontSize="{Binding RegularTextFontSize}" FontWeight="Bold" HorizontalAlignment="Left" Width="219" Foreground="white"/>
+        <ListBox Name="AddOfficerBox" Margin="266,333,354,59" ItemsSource="{Binding EmployeeListOfficer}" ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OfficerAddSelected"></ListBox>
+        <TextBox Name="OfficerSearchBox" Margin="266,292,354,236" TextChanged="SearchOfficer">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Search" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <GridSplitter Height="546" Margin="548,3,250,0" VerticalAlignment="Top" Background="Gray" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch">
+            <GridSplitter.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform AngleY="-1.364"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.06"/>
+                </TransformGroup>
+            </GridSplitter.RenderTransform>
+        </GridSplitter>
+        <Button x:Name="AddOfficer" Content="Toevoegen" Margin="0,507,354,0" VerticalAlignment="Top" Height="21" FontWeight="Bold" HorizontalAlignment="Right" Width="180" Foreground="#FFC3BAAE" IsEnabled="false" Cursor="Hand" Click="AddOfficer_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                <GradientStop Color="#FF0688A7"/>
+                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="Green"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="RemoveOfficer" Content="Verwijderen" Margin="0,241,354,0" VerticalAlignment="Top" Height="21" FontWeight="Bold" HorizontalAlignment="Right" Width="180" Foreground="#FFC3BAAE" IsEnabled="false" Cursor="Hand" Click="RemoveOfficer_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                <GradientStop Color="#FF0688A7"/>
+                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="Green"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="AddAdmin" Content="Toevoegen" Margin="0,507,596,0" VerticalAlignment="Top" Height="21" FontWeight="Bold" HorizontalAlignment="Right" Width="180" Foreground="#FFC3BAAE" Click="AddAdmin_Click" IsEnabled="false" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                <GradientStop Color="#FF0688A7"/>
+                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="Green"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="RemoveAdmin" Content="Verwijderen" Margin="0,241,596,0" VerticalAlignment="Top" Height="21" FontWeight="Bold" HorizontalAlignment="Right" Width="180" Foreground="#FFC3BAAE" Click="RemoveAdmin_Click" IsEnabled="false" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                <GradientStop Color="#FF0688A7"/>
+                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="Green"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label Content="Verwijderen sessies" HorizontalAlignment="Right" Margin="0,18,11,0" VerticalAlignment="Top" FontSize="{Binding RegularTextFontSize}" FontWeight="Bold" Width="207" Foreground="White"/>
+        <ListBox Name="RemoveSessionBox" Margin="582,88,38,154" ItemsSource="{Binding Sessions}" ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="SessionRemoveSelected"></ListBox>
+        <TextBox Name="SessionSearchBox" Margin="582,48,38,481" TextChanged="SearchSession">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Search" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Button x:Name="RemoveSession" Content="Verwijderen" Margin="0,412,38,0" VerticalAlignment="Top" Height="21" FontWeight="Bold" HorizontalAlignment="Right" Width="180" Foreground="#FFC3BAAE" Click="RemoveSession_Click" IsEnabled="false" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                <GradientStop Color="#FF0688A7"/>
+                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="Green"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="Cancel" Content="Annuleren" Margin="0,507,38,0" VerticalAlignment="Top" Height="21" FontWeight="Bold" HorizontalAlignment="Right" Width="180" Foreground="#FFC3BAAE" Click="Cancel_Click" IsEnabled="false" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                <GradientStop Color="#FF0688A7"/>
+                                <GradientStop Color="#FF7B01B8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="#FF0688A7"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
+                                        <GradientStop Color="Green"/>
+                                        <GradientStop Color="#FF7B01B8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>
